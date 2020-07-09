@@ -194,7 +194,6 @@
 				A9484CF65284FAC488CE416F /* Pods-PushNotificationDemo-tvOSTests.debug.xcconfig */,
 				BFC7607F74930F1CD957503E /* Pods-PushNotificationDemo-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
