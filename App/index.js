@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { NavigationContainer, Link } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -9,6 +9,7 @@ import { Alert, Linking } from 'react-native';
 import { PeopleList } from './screens/PeopleList';
 import { PersonDetails } from './screens/PersonDetails';
 import { Intro } from './screens/Intro';
+import { Settings } from './screens/Settings';
 
 const PeopleStack = createStackNavigator();
 const People = () => (
@@ -109,6 +110,11 @@ export default () => {
           name="PeopleTab"
           component={People}
           options={{ title: 'People' }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={Settings}
+          options={{ title: 'Settings' }}
         />
       </Tab.Navigator>
     </NavigationContainer>
