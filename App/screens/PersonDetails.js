@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView, Text, Alert } from 'react-native';
+import messaging from '@react-native-firebase/messaging';
 
 const valueMap = {
   name: 'Name',
@@ -41,6 +42,27 @@ export const PersonDetails = ({ route }) => {
         });
     }
   }, [id]);
+
+  useEffect(() => {
+    messaging()
+      .hasPermission()
+      .then((status) => {
+        if (status === messaging.AuthorizationStatus.NOT_DETERMINED) {
+          Alert.alert(
+            'Would you like to receive push notifications?',
+            'We use notifications to send interesting insights about the Star Wars franchise!',
+            [
+              { text: 'Cancel', onPress: () => {}, style: 'cancel' },
+              {
+                text: 'Continue',
+                onPress: () => messaging().requestPermission(),
+              },
+            ],
+            { cancelable: false },
+          );
+        }
+      });
+  }, []);
 
   return (
     <ScrollView

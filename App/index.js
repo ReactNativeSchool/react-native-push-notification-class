@@ -3,7 +3,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import messaging from '@react-native-firebase/messaging';
 
 import { PeopleList } from './screens/PeopleList';
 import { PersonDetails } from './screens/PersonDetails';
@@ -32,8 +31,6 @@ const IntroScreen = () => (
 
 const Tab = createBottomTabNavigator();
 export default () => {
-  messaging().requestPermission();
-
   return (
     <NavigationContainer
       linking={{
