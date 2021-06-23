@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, Link } from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import messaging from '@react-native-firebase/messaging';
-import { Alert } from 'react-native';
+import { Alert, Linking } from 'react-native';
 
 import { PeopleList } from './screens/PeopleList';
 import { PersonDetails } from './screens/PersonDetails';
@@ -31,6 +31,16 @@ const IntroScreen = () => (
   </ProfileStack.Navigator>
 );
 
+const openLink = (link) => {
+  Linking.canOpenURL(link).then((supported) => {
+    if (supported) {
+      Linking.openURL(link);
+    } else {
+      Alert.alert('Sorry, something went wrong.');
+    }
+  });
+};
+
 const Tab = createBottomTabNavigator();
 export default () => {
   useEffect(() => {
@@ -38,10 +48,34 @@ export default () => {
       const notification = remoteMessage.notification || {};
       const title = notification.title;
       const body = notification.body;
+      const actions = [];
+
+      if (remoteMessage.data && remoteMessage.data.deeplink) {
+        actions.push({
+          text: 'Learn more >',
+          onPress: () => {
+            openLink(remoteMessage.data.deeplink);
+          },
+        });
+      }
+
       if (title) {
-        Alert.alert(title, body);
+        Alert.alert(title, body, actions);
       }
     });
+
+    return unsubscribe;
+  }, []);
+
+  useEffect(() => {
+    const onNotificationOpen = async (remoteMessage = {}) => {
+      if (remoteMessage.data && remoteMessage.data.deeplink) {
+        openLink(remoteMessage.data.deeplink);
+      }
+    };
+
+    messaging().getInitialNotification(onNotificationOpen);
+    const unsubscribe = messaging().onNotificationOpenedApp(onNotificationOpen);
 
     return unsubscribe;
   }, []);
