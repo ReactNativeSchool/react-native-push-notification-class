@@ -145,7 +145,6 @@
 				58D48F9662CF076F05C3FC35 /* Pods-PushNotificationDemo-PushNotificationDemoTests.debug.xcconfig */,
 				BF2A9B1980C5692FA1CF342D /* Pods-PushNotificationDemo-PushNotificationDemoTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
