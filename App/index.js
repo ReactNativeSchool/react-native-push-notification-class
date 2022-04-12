@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import 'react-native-gesture-handler';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import { PeopleList } from './screens/PeopleList';
-import { PersonDetails } from './screens/PersonDetails';
-import { Intro } from './screens/Intro';
+import {PeopleList} from './screens/PeopleList';
+import {PersonDetails} from './screens/PersonDetails';
+import {Intro} from './screens/Intro';
 
 const PeopleStack = createStackNavigator();
 const People = () => (
@@ -36,30 +36,31 @@ export default () => {
       linking={{
         prefixes: ['swapidemo://', 'https://reactnativeschool.com'],
         config: {
-          PeopleTab: {
-            initialRouteName: 'People',
-            screens: {
-              People: {
-                path: 'people',
-              },
-              PersonDetails: {
-                path: 'person/:id',
+          screens: {
+            PeopleTab: {
+              initialRouteName: 'People',
+              screens: {
+                People: {
+                  path: 'people',
+                },
+                PersonDetails: {
+                  path: 'person/:id',
+                },
               },
             },
           },
         },
-      }}
-    >
-      <Tab.Navigator>
+      }}>
+      <Tab.Navigator screenOptions={{headerShown: false}}>
         <Tab.Screen
           name="IntroTab"
           component={IntroScreen}
-          options={{ title: 'Intro' }}
+          options={{title: 'Intro'}}
         />
         <Tab.Screen
           name="PeopleTab"
           component={People}
-          options={{ title: 'People' }}
+          options={{title: 'People'}}
         />
       </Tab.Navigator>
     </NavigationContainer>
