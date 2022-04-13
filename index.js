@@ -1,6 +1,11 @@
-import { AppRegistry } from 'react-native';
-import { name as appName } from './app.json';
-// eslint-disable-next-line import/extensions
+/**
+ * @format
+ */
+
+import {AppRegistry, LogBox} from 'react-native';
 import App from './App';
+import {name as appName} from './app.json';
+
+LogBox.ignoreLogs(['[react-native-gesture-handler']);
 
 AppRegistry.registerComponent(appName, () => App);

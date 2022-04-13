@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { FlatList, View, Text, Alert, ActivityIndicator } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import React, {useEffect, useState} from 'react';
+import {FlatList, View, Text, Alert, ActivityIndicator} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
-export const PeopleList = ({ navigation }) => {
+export const PeopleList = ({navigation}) => {
   const [people, setPeople] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('https://swapi.dev/api/people')
-      .then((res) => res.json())
-      .then((res) => {
+      .then(res => res.json())
+      .then(res => {
         setPeople(res.results);
       })
-      .catch((error) => {
+      .catch(error => {
         Alert.alert('an error occurred! See console for more info.');
         console.log(error);
       })
@@ -23,23 +23,21 @@ export const PeopleList = ({ navigation }) => {
 
   return (
     <FlatList
-      style={{ backgroundColor: '#fff' }}
+      style={{backgroundColor: '#fff'}}
       data={people}
-      renderItem={({ item }) => (
+      renderItem={({item}) => (
         <TouchableOpacity
           onPress={() =>
             navigation.push('PersonDetails', {
               details: item,
             })
-          }
-        >
+          }>
           <View
             style={{
               paddingHorizontal: 10,
               paddingVertical: 15,
-            }}
-          >
-            <Text style={{ fontSize: 18 }}>{item.name}</Text>
+            }}>
+            <Text style={{fontSize: 18}}>{item.name}</Text>
           </View>
         </TouchableOpacity>
       )}
@@ -52,7 +50,7 @@ export const PeopleList = ({ navigation }) => {
           }}
         />
       )}
-      keyExtractor={(item) => item.url}
+      keyExtractor={item => item.url}
       ListFooterComponent={() => {
         if (loading) {
           return (
