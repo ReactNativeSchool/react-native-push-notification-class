@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "531455514598",
+    "firebase_url": "https://push-notification-class.firebaseio.com",
+    "project_id": "push-notification-class",
+    "storage_bucket": "push-notification-class.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531455514598:android:2a96839c4a78fa383f6827",
+        "android_client_info": {
+          "package_name": "com.pushnotificationdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531455514598-4aqpnpvivc2ec24kfuscalm4057k273c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFc1F3fTyM8vwaAUONW-tUVKu0ZCYQjX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531455514598-4aqpnpvivc2ec24kfuscalm4057k273c.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "531455514598-ocqc0bj5nj3scqn7q3jvaqvkl97pa6s2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.handlebarlabs.PushNotificationClass"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
